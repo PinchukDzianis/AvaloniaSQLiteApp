@@ -1,0 +1,2 @@
+MainPackage=D:\Algimed\AvaloniaSQLiteApp\AvaloniaSQLiteApp.Packaging\bin\AnyCPU\Release\AvaloniaSQLiteApp.Packaging_1.0.2.0_AnyCPU.msix
+SymbolPackage=D:\Algimed\AvaloniaSQLiteApp\AvaloniaSQLiteApp.Packaging\obj\Release\Symbols\AvaloniaSQLiteApp.Packaging_1.0.2.0_AnyCPU.appxsym

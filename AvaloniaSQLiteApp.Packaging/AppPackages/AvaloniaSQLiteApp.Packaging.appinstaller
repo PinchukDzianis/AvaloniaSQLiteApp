@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppInstaller
+	Uri="file:///D:/Algimed/AvaloniaSQLiteApp.Packaging.appinstaller"
+	Version="1.0.2.0" xmlns="http://schemas.microsoft.com/appx/appinstaller/2017/2">
+	<MainBundle
+		Name="aef19b26-d1c1-4e39-a375-a2c37f4af68d"
+		Version="1.0.2.0"
+		Publisher="CN=User"
+		Uri="file:///D:/Algimed/AvaloniaSQLiteApp.Packaging_1.0.2.0_Test/AvaloniaSQLiteApp.Packaging_1.0.2.0_AnyCPU.msixbundle" />
+	<UpdateSettings>
+		<OnLaunch
+			HoursBetweenUpdateChecks="0" />
+	</UpdateSettings>
+</AppInstaller>
