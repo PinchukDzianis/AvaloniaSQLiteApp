@@ -16,6 +16,7 @@ namespace AvaloniaSQLiteApp.Views
     {
         private readonly DataGrid _modesDataGrid = null!;
         private readonly DataGrid _stepsDataGrid = null!;
+        private static string? dbPath = null;
 
         public ObservableCollection<Mode> Modes { get; set; } = [];
         public ObservableCollection<Step> Steps { get; set; } = [];
@@ -27,7 +28,19 @@ namespace AvaloniaSQLiteApp.Views
             _stepsDataGrid = this.FindControl<DataGrid>("StepsDataGrid")!;
 
             this.DataContext = this;
+          
+            LoadDbPath();
+
             LoadData();
+        }
+
+        private static void LoadDbPath()
+        {
+            string dbFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AvaloniaSQLiteApp");
+
+            Directory.CreateDirectory(dbFolder);
+
+            dbPath = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AvaloniaSQLiteApp"), "database.db");
         }
 
         private void InitializeComponent()
@@ -37,7 +50,6 @@ namespace AvaloniaSQLiteApp.Views
 
         private void LoadData()
         {
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
             using var connection = new SqliteConnection($"Data Source={dbPath}");
             connection.Open();
 
@@ -179,7 +191,6 @@ namespace AvaloniaSQLiteApp.Views
 
         private static bool ModeExists(int modeId)
         {
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
             using var connection = new SqliteConnection($"Data Source={dbPath}");
             connection.Open();
 
@@ -191,7 +202,6 @@ namespace AvaloniaSQLiteApp.Views
 
         private static bool StepExists(int id)
         {
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
             using var connection = new SqliteConnection($"Data Source={dbPath}");
             connection.Open();
 
@@ -203,7 +213,6 @@ namespace AvaloniaSQLiteApp.Views
 
         private static void InsertModeIntoDatabase(int modeId, string name, int maxBottleNumber, int maxUsedTips)
         {
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
             using var connection = new SqliteConnection($"Data Source={dbPath}");
             connection.Open();
             using var command = connection.CreateCommand();
@@ -217,7 +226,6 @@ namespace AvaloniaSQLiteApp.Views
 
         private static void InsertStepIntoDatabase(int id, int modeId, int timer, string destination, int speed, string type, int volume)
         {
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
             using var connection = new SqliteConnection($"Data Source={dbPath}");
             connection.Open();
             using var command = connection.CreateCommand();
@@ -288,7 +296,6 @@ namespace AvaloniaSQLiteApp.Views
 
         private static void DeleteModeFromDatabase(int id)
         {
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
             using var connection = new SqliteConnection($"Data Source={dbPath}");
             connection.Open();
             using var command = connection.CreateCommand();
@@ -299,7 +306,6 @@ namespace AvaloniaSQLiteApp.Views
 
         private static void DeleteStepFromDatabase(int id)
         {
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
             using var connection = new SqliteConnection($"Data Source={dbPath}");
             connection.Open();
             using var command = connection.CreateCommand();
@@ -310,7 +316,6 @@ namespace AvaloniaSQLiteApp.Views
 
         private static void DeleteStepsByModeFromDatabase(int modeId)
         {
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
             using var connection = new SqliteConnection($"Data Source={dbPath}");
             connection.Open();
             using var command = connection.CreateCommand();
@@ -321,7 +326,6 @@ namespace AvaloniaSQLiteApp.Views
 
         private static void UpdateStepInDatabase(Step step)
         {
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
             using var connection = new SqliteConnection($"Data Source={dbPath}");
             connection.Open();
             using var command = connection.CreateCommand();
@@ -346,7 +350,6 @@ namespace AvaloniaSQLiteApp.Views
 
         private static void UpdateModeInDatabase(Mode mode)
         {
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
             using var connection = new SqliteConnection($"Data Source={dbPath}");
             connection.Open();
             using var command = connection.CreateCommand();

@@ -32,7 +32,12 @@ namespace Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
+            string dbFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AvaloniaSQLiteApp");
+            
+            Directory.CreateDirectory(dbFolder);
+
+            string dbPath = Path.Combine(dbFolder, "database.db");
+
             options.UseSqlite($"Data Source={dbPath}");
         }
     }

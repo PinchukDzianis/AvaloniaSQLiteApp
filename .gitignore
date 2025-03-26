@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+# Exclude 
+
+.vs/
+*.dbmdl
+*.jfm
+*.suo
+*.rsuser
+*.sqlproj.user
+*.suo
+*.sqlite
+*.yml

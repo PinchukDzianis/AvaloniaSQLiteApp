@@ -19,6 +19,7 @@ namespace AvaloniaSQLiteApp
         public static IServiceProvider Services { get; private set; }
 
         private IPasswordService _passwordService;
+        private static string dbPath;
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
         public override void Initialize()
@@ -29,6 +30,11 @@ namespace AvaloniaSQLiteApp
 
         public override void OnFrameworkInitializationCompleted()
         {
+            string dbFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AvaloniaSQLiteApp");
+
+            Directory.CreateDirectory(dbFolder);
+
+            dbPath = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AvaloniaSQLiteApp"), "database.db");
 
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddDbContext<AppDbContext>(options =>
@@ -56,7 +62,6 @@ namespace AvaloniaSQLiteApp
 
         private static void EnsureDatabase()
         {
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
             if (!File.Exists(dbPath))
             {
                 using var connection = new SqliteConnection($"Data Source={dbPath}");
@@ -116,7 +121,6 @@ namespace AvaloniaSQLiteApp
                 return false;
 
             var (Salt, Hash) = _passwordService.HashPassword(password);
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
             using var connection = new SqliteConnection($"Data Source={dbPath}");
             connection.Open();
 
@@ -139,7 +143,6 @@ namespace AvaloniaSQLiteApp
 
         public bool AuthenticateUser(string login, string password)
         {
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "database.db");
             using var connection = new SqliteConnection($"Data Source={dbPath}");
             connection.Open();
 

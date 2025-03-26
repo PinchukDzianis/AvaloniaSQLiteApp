@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <AppInstaller
 	Uri="file:///D:/Algimed/AvaloniaSQLiteApp.Packaging_neutral.appinstaller"
-	Version="1.1.5.0" xmlns="http://schemas.microsoft.com/appx/appinstaller/2017/2">
+	Version="1.1.7.0" xmlns="http://schemas.microsoft.com/appx/appinstaller/2017/2">
 	<MainPackage
 		Name="aef19b26-d1c1-4e39-a375-a2c37f4af68d"
-		Version="1.1.5.0"
-		Publisher="CN=User"
-		Uri="file:///D:/Algimed/AvaloniaSQLiteApp.Packaging_1.1.5.0_AnyCPU_Test/AvaloniaSQLiteApp.Packaging_1.1.5.0_AnyCPU.msix"
+		Version="1.1.7.0"
+		Publisher="CN=Avalonia"
+		Uri="file:///D:/Algimed/AvaloniaSQLiteApp.Packaging_1.1.7.0_AnyCPU_Debug_Test/AvaloniaSQLiteApp.Packaging_1.1.7.0_AnyCPU_Debug.msix"
 		ProcessorArchitecture="neutral" />
 	<UpdateSettings>
 		<OnLaunch
