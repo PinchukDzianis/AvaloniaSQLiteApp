@@ -1,0 +1,77 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaSQLiteApp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:model="using:AvaloniaSQLiteApp.Models" 
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="1000"
+        x:Class="AvaloniaSQLiteApp.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaSQLiteApp"
+		WindowState="Maximized">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<StackPanel>
+		<TextBlock Text="Modes" Margin="10"/>
+		<DataGrid Margin="20" ItemsSource="{Binding Modes}" x:Name="ModesDataGrid"
+				  AutoGenerateColumns="False"
+				  GridLinesVisibility="All"
+				  BorderThickness="1"
+				  BorderBrush="Gray"
+				  MaxHeight="250"
+				  Grid.Row="5">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="ID" Binding="{Binding ID}" />
+				<DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+				<DataGridTextColumn Header="Max Bottle Number" Binding="{Binding MaxBottleNumber}" />
+				<DataGridTextColumn Header="Max Used Tips" Binding="{Binding MaxUsedTips}" />
+				<DataGridTemplateColumn Header="Actions">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate DataType="model:Mode">
+							<StackPanel Orientation="Horizontal">
+								<Button Content="Edit" Click="OnEditModeClick" Margin="10"/>
+								<Button Content="Delete" Click="OnDeleteModeClick" Margin="10"/>
+							</StackPanel>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+		</DataGrid>
+
+		<TextBlock Text="Steps" Margin="10"/>
+
+		<DataGrid Margin="20" ItemsSource="{Binding Steps}" x:Name="StepsDataGrid"
+				  AutoGenerateColumns="False"
+				  GridLinesVisibility="All"
+				  BorderThickness="1"
+				  BorderBrush="Gray"
+				  MaxHeight="250"
+                  Grid.Row="5">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="ID" Binding="{Binding ID}" />
+				<DataGridTextColumn Header="ModeId" Binding="{Binding ModeId}" />
+				<DataGridTextColumn Header="Timer" Binding="{Binding Timer}" />
+				<DataGridTextColumn Header="Destination" Binding="{Binding Destination}" />
+				<DataGridTextColumn Header="Speed" Binding="{Binding Speed}" />
+				<DataGridTextColumn Header="Type" Binding="{Binding Type}" />
+				<DataGridTextColumn Header="Volume" Binding="{Binding Volume}" />
+				<DataGridTemplateColumn Header="Actions">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate DataType="model:Step">
+							<StackPanel Orientation="Horizontal">
+								<Button Content="Edit" Click="OnEditStepClick" Margin="10"/>
+								<Button Content="Delete" Click="OnDeleteStepClick" Margin="10"/>
+							</StackPanel>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+		</DataGrid>
+
+		<Button Content="Import Excel" Click="OnImportExcelClick" Margin="10"/>
+	</StackPanel>
+</Window>

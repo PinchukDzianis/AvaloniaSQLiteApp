@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="AvaloniaSQLiteApp.Views.LoginWindow"
+        Title="Login" Width="400" Height="250">
+	<StackPanel Margin="10">
+		<TextBlock Text="Login" FontSize="16" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+
+		<TextBox x:Name="LoginTextBox" Width="250" Margin="0,0,0,10" Watermark="Enter login"/>
+
+		<TextBox x:Name="PasswordTextBox" PasswordChar="*" Width="250" Margin="0,0,0,10" Watermark="Enter password"/>
+
+		<TextBlock x:Name="MessageTextBlock" FontSize="14" Foreground="Red" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+
+		<Button x:Name="LoginButton" Content="Login" Width="250" Margin="0,0,0,10" HorizontalAlignment="Center" Click="OnLoginClick"/>
+		<Button x:Name="RegisterButton" Content="Register" Width="250" Margin="0,0,0,10" HorizontalAlignment="Center" Click="OnRegisterClick"/>
+	</StackPanel>
+</Window>
